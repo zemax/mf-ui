@@ -1,0 +1,14 @@
+/**************************************************
+ * BACKGROUND SPRITE
+ **************************************************/
+
+@mixin background-sprite($targetWidth, $spriteWidth, $spriteHeight, $sheetWidth: 100px, $sheetHeight: 300px, $spriteNumber: 0, $sheetOffset: 100px) {
+	$zoomRatio:          $targetWidth / $spriteWidth;
+
+	width:               $targetWidth;
+	height:              ceil($targetWidth * ($spriteHeight / $spriteWidth));
+
+	background-repeat:   no-repeat;
+	background-size:     ($sheetWidth * $zoomRatio) ($sheetHeight * $zoomRatio);
+	background-position: 0 (-$sheetOffset * $spriteNumber * $zoomRatio);
+}

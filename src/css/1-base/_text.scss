@@ -1,0 +1,220 @@
+/**************************************************
+* TEXT ELEMENTS
+**************************************************/
+
+body {
+	margin:           0;
+	padding:          0;
+
+	color:            $color-default;
+	background-color: $color-grey-light;
+
+	@include font('default');
+	font-size:        font-size('default');
+	line-height:      line-height('default');
+}
+
+dialog {
+	color:            $color-default;
+	background-color: white;
+
+	@include font('default');
+	font-size:        font-size('default');
+	line-height:      line-height('default');
+}
+
+$paragraph-margin: font-size() * line-height();
+
+p,
+ul {
+	margin:  0;
+	padding: 0;
+
+	& + h1, & + .h1,
+	& + h2, & + .h2,
+	& + h3, & + .h3 {
+		margin-top: $paragraph-margin;
+	}
+
+	& + p {
+		margin-top: $paragraph-margin;
+	}
+}
+
+a {
+	color:                 inherit;
+	text-decoration-color: $color_primary;
+
+	&:hover {
+		text-decoration-color: currentColor;
+	}
+}
+
+a[href=""],
+a[href="#"] {
+	pointer-events: none;
+}
+
+strong {
+	@include font('bold');
+}
+
+h1, .h1,
+h2, .h2 {
+	margin:      0 0 $paragraph-margin;
+	padding:     0;
+
+	@include font('title');
+	font-size:   font-size('title', 'small');
+	line-height: line-height('title');
+
+	color:       $color-primary;
+
+	em {
+		@include font('title');
+	}
+
+	@include large-or-more {
+		font-size: font-size('title', 'large');
+	}
+}
+
+h3, .h3 {
+	margin:    0 0 $paragraph-margin;
+	padding:   0;
+
+	@include font('title');
+	font-size: font-size('h3', 'small');
+
+	em {
+		@include font('title');
+	}
+
+	color:     $color-default;
+
+	@include large-or-more {
+		font-size: font-size('h3', 'large');
+	}
+}
+
+h4, .h4 {
+	margin:           0;
+	padding:          0;
+
+	@include font('bold');
+	font-size:        font-size();
+	line-height:      line-height();
+
+	color:            currentColor;
+	background-color: transparent;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4 {
+	a {
+		text-decoration: none;
+	}
+}
+
+/**************************************************
+* QUOTE
+**************************************************/
+
+blockquote {
+	position:   relative;
+
+	margin:     gap();
+
+	@include medium-or-more {
+		margin: gap() column();
+	}
+
+	text-align: center;
+
+	@include font('quote');
+	font-size:  font-size('quote');
+
+	&::before,
+	&::after {
+		position:    relative;
+		top:         .2em;
+
+		@include font('title');
+		font-size:   2em;
+		line-height: .5em;
+		color:       $color-primary;
+	}
+
+	&::before {
+		content: '“';
+	}
+
+	&::after {
+		content: '”';
+	}
+}
+
+/**************************************************
+* TABLE
+**************************************************/
+
+table {
+	border-spacing: 0;
+
+	width:          100%;
+	border:         1px solid $color-default;
+
+
+	th,
+	td {
+		padding:          .5em;
+		background-color: white;
+		border:           1px solid $color-default;
+	}
+
+	tr:hover td {
+	}
+
+	th {
+		color:            white;
+		background-color: $color-default;
+
+		@include font('title');
+		padding-top:      1em;
+	}
+}
+
+/**************************************************
+* IMAGES
+**************************************************/
+
+img {
+	max-width: 100%;
+	height:    auto;
+}
+
+
+/**************************************************
+* ARTICLE
+**************************************************/
+
+article ul {
+	margin:     0;
+	padding:    0;
+	list-style: none;
+
+	li {
+		position: relative;
+		margin:   0;
+		padding:  0 0 0 gap();
+
+		&::before {
+			content:  '•';
+			position: absolute;
+			top:      0;
+			left:     0;
+		}
+	}
+}

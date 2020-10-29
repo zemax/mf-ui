@@ -1,0 +1,428 @@
+/**************************************************
+* FORM INPUTS
+**************************************************/
+
+* {
+	outline-color:  $color-primary;
+	outline-offset: 2px;
+}
+
+@mixin input-vertical-sizing {
+	padding-top:    rem(8px);
+	padding-bottom: rem(8px);
+	line-height:    line-height('input') * font-size('input');
+}
+
+@mixin input() {
+	margin:        0;
+	@include input-vertical-sizing;
+	padding-left:  1em;
+	padding-right: 1em;
+
+	width:         100%;
+	max-width:     100%;
+
+	text-align:    left;
+
+	@include font('input');
+	font-size:     font-size('input');
+	line-height:   line-height('input') * font-size('input');
+
+	color:         $color-default;
+	background:    $color-input-background;
+	border:        border-width() solid $color-input-border;
+	border-radius: rem(4px);
+
+	transition:    background-color .15s ease,
+				   border-color .15s ease,
+				   box-shadow .15s ease;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="search"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+.algolia-autocomplete input,
+textarea,
+select {
+	@include input;
+
+	&::placeholder {
+		color: $color-input-border;
+	}
+
+	&.set-blank[data-blank="false"],
+	&:focus {
+		background-color: $color-input-background-focus;
+		border-color:     $color-input-border-focus;
+
+		outline:          none;
+		box-shadow:       $outline-box-shadow;
+	}
+
+	&:-webkit-autofill {
+		&,
+		&:hover,
+		&:focus {
+			box-shadow: 0 0 0 1000px #E8F7F7 inset;
+		}
+	}
+
+	&[readonly] {
+		color: $color-default;
+
+		&:focus {
+			border-color: $color-background-default;
+		}
+	}
+}
+
+input[type="date"],
+input[type="time"] {
+	padding-right: rem(2px);
+}
+
+textarea {
+	display: block;
+	resize:  vertical;
+}
+
+select {
+	box-sizing:          border-box;
+	padding-right:       2em;
+
+	-webkit-appearance:  none;
+	-moz-appearance:     none;
+	appearance:          none;
+
+	background-image:    svg-triangle-down($color-default, 10, 5);
+	background-repeat:   no-repeat, repeat;
+	background-position: right .7em center;
+	background-size:     .65em auto, 100%;
+
+	&::-ms-expand {
+		display: none;
+	}
+}
+
+input[type="submit"],
+button[type="submit"] {
+	@include cta();
+
+	&:disabled {
+		color:            $color-background-default;
+		border-color:     $color-default;
+		background-color: $color-default;
+	}
+}
+
+/**************************************************
+* LABELS
+**************************************************/
+
+label,
+.label {
+	display:       block;
+	@include input-vertical-sizing;
+
+	@include font('label');
+	font-size:     font-size('label');
+	line-height:   line-height('input') * font-size('input');
+
+	color:         $color-default;
+	background:    transparent;
+
+	border-top:    border-width() solid transparent;
+	border-bottom: border-width() solid transparent;
+
+	sup {
+		vertical-align: baseline;
+	}
+}
+
+/**************************************************
+* CHECK BOX
+**************************************************/
+//
+.background-sprite-checkbox {
+	$color-background:       inspect($color-input-background);
+	$color-border:           inspect($color-input-border);
+	$color-mark:             inspect($color-primary);
+	$color-background-focus: inspect($color-input-background-focus);
+	$color-border-focus:     inspect($color-input-border-focus);
+	$color-mark-focus:       inspect($color-primary);
+	@import '../../assets/form-checkbox.svg';
+}
+
+@mixin background-sprite-checkbox($sprite_number: 0, $extend: true, $width: 18px) {
+	@if ($extend) {
+		@extend .background-sprite-checkbox;
+	}
+
+	@include background-sprite($width, 28px, 28px, 28px, 400px, $sprite_number);
+}
+
+@mixin checkbox($checked: false, $offset: 0) {
+	@if (not $checked) {
+		&::before {
+			content:        '';
+			display:        inline-block;
+			vertical-align: middle;
+			margin-right:   .5em;
+			margin-bottom:  .15em;
+			@include background-sprite-checkbox(0 + 2 * $offset);
+
+			transition:     background-color .15s ease,
+							border-color .15s ease,
+							box-shadow .15s ease;
+		}
+	} @else {
+		&::before {
+			@include background-sprite-checkbox(1 + 2 * $offset, false);
+		}
+	}
+}
+
+@mixin checkbox-outline {
+	&::before {
+		outline:    none;
+		box-shadow: $outline-box-shadow;
+	}
+}
+
+/**************************************************
+* RADIO BOX
+**************************************************/
+//
+.background-sprite-radiobox {
+	$color-background:       inspect($color-input-background);
+	$color-border:           inspect($color-input-border);
+	$color-mark:             inspect($color-primary);
+	$color-background-focus: inspect($color-input-background-focus);
+	$color-border-focus:     inspect($color-input-border-focus);
+	$color-mark-focus:       inspect($color-primary);
+	@import '../../assets/form-radiobox.svg';
+}
+
+@mixin background-sprite-radiobox($sprite_number: 0, $extend: true, $width: 18px) {
+	@if ($extend) {
+		@extend .background-sprite-radiobox;
+	}
+
+	@include background-sprite($width, 28px, 28px, 28px, 400px, $sprite_number);
+}
+
+@mixin radiobox($checked: false, $offset: 0) {
+	@if (not $checked) {
+		&::before {
+			content:        '';
+			display:        inline-block;
+			vertical-align: middle;
+			margin-right:   .5em;
+			margin-bottom:  .15em;
+			border-radius:  50%;
+			@include background-sprite-radiobox(0 + 2 * $offset);
+
+			transition:     background-color .15s ease,
+							border-color .15s ease,
+							box-shadow .15s ease;
+		}
+	} @else {
+		&::before {
+			@include background-sprite-radiobox(1 + 2 * $offset, false);
+		}
+	}
+}
+
+@mixin radiobox-outline {
+	&::before {
+		outline:    none;
+		box-shadow: $outline-box-shadow;
+	}
+}
+
+/**************************************************
+* CHECKBOX
+**************************************************/
+
+.form-row--checkbox input[type="checkbox"],
+.checkbox--before input[type="checkbox"],
+input[type="checkbox"].checkbox--before {
+	@include visually-hidden;
+
+	& + label {
+		cursor: pointer;
+		@include checkbox(false);
+	}
+
+	&:checked + label {
+		@include checkbox(true);
+	}
+
+	&:focus + label {
+		@include checkbox(false, 1);
+		@include checkbox-outline;
+	}
+
+	&:focus:checked + label {
+		@include checkbox(true, 1);
+	}
+}
+
+label.checkbox--inside {
+	input[type="checkbox"] {
+		@include visually-hidden;
+	}
+
+	span {
+		cursor: pointer;
+		@include checkbox(false);
+	}
+
+	input:checked + span {
+		@include checkbox(true);
+	}
+
+	input:focus + span {
+		@include checkbox(false, 1);
+		@include checkbox-outline;
+	}
+
+	input:focus:checked + span {
+		@include checkbox(true, 1);
+	}
+}
+
+/**************************************************
+* RADIO
+**************************************************/
+
+.form-row--radiobox input[type="radio"],
+.form-row--radioboxes input[type="radio"],
+.radiobox--before input[type="radio"],
+input[type="radio"].radiobox--before {
+	@include visually-hidden;
+
+	& + label {
+		cursor: pointer;
+		@include radiobox(false);
+	}
+
+	&:checked + label {
+		@include radiobox(true);
+	}
+
+	&:focus + label {
+		@include radiobox(false, 1);
+		@include radiobox-outline;
+	}
+
+	&:focus:checked + label {
+		@include radiobox(true, 1);
+	}
+}
+
+label.radiobox--inside {
+	input[type="radio"] {
+		@include visually-hidden;
+	}
+
+	span {
+		cursor: pointer;
+		@include radiobox(false);
+	}
+
+	input:checked + span {
+		@include radiobox(true);
+	}
+
+	input:focus + span {
+		@include radiobox(false, 1);
+		@include radiobox-outline;
+	}
+
+	input:focus:checked + span {
+		@include radiobox(true, 1);
+	}
+}
+
+.form-row--radioboxes-inline {
+	label {
+		display:      inline-block;
+		margin-right: gap();
+	}
+}
+
+/**************************************************
+* FORM ROW
+**************************************************/
+
+.form-row {
+	margin-bottom: gap();
+}
+
+@include medium-or-more {
+	.form-row--inline {
+		display:         flex;
+		flex-flow:       row wrap;
+		justify-content: space-between;
+		align-items:     flex-start;
+
+		> :nth-child(2n + 1) {
+			text-align: right;
+			@include flex-width(column-width(1, 4, gap()));
+		}
+
+		> :nth-child(2n + 2) {
+			@include flex-width(column-width(3, 4, gap()));
+		}
+	}
+
+	.form-row--inline-input {
+		padding-left: calc(#{column-width(1, 4, gap())} + #{gap()});
+	}
+}
+
+/**************************************************
+* SUBMIT
+**************************************************/
+
+.form-row--submit {
+	a,
+	button,
+	input[type="submit"] {
+		&:not(:last-child) {
+			margin-right: gap();
+		}
+	}
+}
+
+/**************************************************
+* ERROR
+**************************************************/
+
+.form-errors {
+	> ul {
+		margin:           gap() 0;
+		padding:          gap();
+		list-style:       none;
+
+		li {
+			margin:  0;
+			padding: 0;
+		}
+
+		li + li {
+			margin-top: gap();
+		}
+
+		color:            black;
+		background-color: rgba($color-orangered, .1);
+		border:           border-width() solid $color-orangered;
+		border-radius:    border-width();
+	}
+}

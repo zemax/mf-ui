@@ -1,0 +1,72 @@
+/**************************************************
+ * CROSS
+ **************************************************/
+
+@function svg-cross($color, $width: 10, $height: 10, $stroke: 1) {
+	@return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$width}' height='#{$height}' viewBox='0 0 #{$width} #{$height}'%3E%3Cpath fill='none' stroke='%23#{str-slice(inspect($color),2)}' stroke-width='#{$stroke}' stroke-linecap='butt' stroke-linejoin='bevel' d='M#{.5 * $stroke} #{.5 * $stroke}L#{$width - (.5 * $stroke)} #{$height - (.5 * $stroke)}M#{$width - (.5 * $stroke)} #{.5 * $stroke}L#{.5 * $stroke} #{$height - (.5 * $stroke)}'/%3E%3C/svg%3E");
+}
+
+@mixin svg-cross($color, $width: 10, $height: 10, $stroke: 1) {
+	background-image: svg-cross($color, $width, $height, $stroke);
+}
+
+/**************************************************
+ * BURGER
+ **************************************************/
+
+@function svg-burger($color, $width: 10, $thickness: 2, $offset: 2) {
+	$height: 3 * $thickness + 2 * $offset;
+	@return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$width}' height='#{$height}' viewBox='0 0 #{$width} #{$height}'%3E%3Cpath fill='%23#{str-slice(inspect($color),2)}' d='M0 0h#{$width}v#{$thickness}h-#{$width}zM0 #{$thickness+$offset}h#{$width}v#{$thickness}h-#{$width}zM0 #{2*$thickness+2*$offset}h#{$width}v#{$thickness}h-#{$width}z'/%3E%3C/svg%3E");
+}
+
+@mixin svg-burger($color, $width: 10, $thickness: 2, $offset: 2) {
+	background-image: svg-burger($color, $width, $thickness, $offset);
+}
+
+/**************************************************
+ * SIMPLE TRIANGLE
+ **************************************************/
+
+@function svg-triangle-down($color, $width: 5, $height: 10) {
+	@return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$width}' height='#{$height}' viewBox='0 0 #{$width} #{$height}'%3E%3Cpath fill='%23#{str-slice(inspect($color),2)}' stroke='none' d='M0 0L#{.5 * $width} #{$height}L#{$width} 0z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+@mixin svg-arrow-right($color, $width: 5, $height: 10, $stroke: 1, $linecap: 'round', $linejoin: 'round') {
+	background-image: svg-arrow-right($color, $width, $height, $stroke, $linecap, $linejoin);
+}
+
+/**************************************************
+ * ARROW
+ **************************************************/
+
+@function svg-arrow-right($color, $width: 5, $height: 10, $stroke: 1, $linecap: 'round', $linejoin: 'round') {
+	@return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$width}' height='#{$height}' viewBox='0 0 #{$width} #{$height}'%3E%3Cpath fill='none' stroke='%23#{str-slice(inspect($color),2)}' stroke-width='#{$stroke}' stroke-linecap='#{$linecap}' stroke-linejoin='#{$linejoin}' d='M#{.5 * $stroke} #{.5 * $stroke}L#{$width - (.5 * $stroke)} #{.5 * $height}L#{.5 * $stroke} #{$height - (.5 * $stroke)}'%3E%3C/path%3E%3C/svg%3E");
+}
+
+@mixin svg-arrow-right($color, $width: 5, $height: 10, $stroke: 1, $linecap: 'round', $linejoin: 'round') {
+	background-image: svg-arrow-right($color, $width, $height, $stroke, $linecap, $linejoin);
+}
+
+@function svg-arrow-left($color, $width: 5, $height: 10, $stroke: 1, $linecap: 'round', $linejoin: 'round') {
+	@return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$width}' height='#{$height}' viewBox='0 0 #{$width} #{$height}'%3E%3Cpath fill='none' stroke='%23#{str-slice(inspect($color),2)}' stroke-width='#{$stroke}' stroke-linecap='#{$linecap}' stroke-linejoin='#{$linejoin}' d='M#{$width - (.5 * $stroke)} #{.5 * $stroke}L#{.5 * $stroke} #{.5 * $height}L#{$width - (.5 * $stroke)} #{$height - (.5 * $stroke)}'%3E%3C/path%3E%3C/svg%3E");
+}
+
+@mixin svg-arrow-left($color, $width: 5, $height: 10, $stroke: 1, $linecap: 'round', $linejoin: 'round') {
+	background-image: svg-arrow-left($color, $width, $height, $stroke, $linecap, $linejoin);
+}
+
+@function svg-arrow-down($color, $width: 10, $height: 5, $stroke: 1, $linecap: 'round', $linejoin: 'round') {
+	@return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$width}' height='#{$height}' viewBox='0 0 #{$width} #{$height}'%3E%3Cpath fill='none' stroke='%23#{str-slice(inspect($color),2)}' stroke-width='#{$stroke}' stroke-linecap='#{$linecap}' stroke-linejoin='#{$linejoin}' d='M#{.5 * $stroke} #{.5 * $stroke}L#{.5 * $width} #{$height - (.5 * $stroke)}L#{$width - .5 * $stroke} #{.5 * $stroke}'%3E%3C/path%3E%3C/svg%3E");
+}
+
+@mixin svg-arrow-down($color, $width: 10, $height: 5, $stroke: 1, $linecap: 'round', $linejoin: 'round') {
+	background-image: svg-arrow-down($color, $width, $height, $stroke, $linecap, $linejoin);
+}
+
+@function svg-arrow-up($color, $width: 10, $height: 5, $stroke: 1, $linecap: 'round', $linejoin: 'round') {
+	@return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$width}' height='#{$height}' viewBox='0 0 #{$width} #{$height}'%3E%3Cpath fill='none' stroke='%23#{str-slice(inspect($color),2)}' stroke-width='#{$stroke}' stroke-linecap='#{$linecap}' stroke-linejoin='#{$linejoin}' d='M#{.5 * $stroke} #{$height - (.5 * $stroke)}L#{.5 * $width} #{.5 * $stroke}L#{$width - .5 * $stroke} #{$height - (.5 * $stroke)}'%3E%3C/path%3E%3C/svg%3E");
+}
+
+@mixin svg-arrow-up($color, $width: 10, $height: 5, $stroke: 1, $linecap: 'round', $linejoin: 'round') {
+	background-image: svg-arrow-up($color, $width, $height, $stroke, $linecap, $linejoin);
+}

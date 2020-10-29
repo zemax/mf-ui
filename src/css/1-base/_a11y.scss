@@ -1,0 +1,23 @@
+/**************************************************
+* ACCESSIBILITY HELPERS
+**************************************************/
+
+.visually-hidden {
+	@include visually-hidden;
+}
+
+.a11y-link {
+	position: absolute;
+
+	&:not(:focus) {
+		@include visually-hidden;
+	}
+
+	&:focus {
+		padding:          1rem 2rem;
+		font-size:        1rem;
+
+		color:            white;
+		background-color: black;
+	}
+}

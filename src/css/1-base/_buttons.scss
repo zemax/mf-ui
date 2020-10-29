@@ -1,0 +1,61 @@
+/**************************************************
+* CTA
+**************************************************/
+
+@mixin cta-sizing {
+	padding:         rem(8px) rem(12px);
+
+	min-width:       column(1);
+
+	text-decoration: none;
+
+	font-size:       font-size('cta', 'small');
+	line-height:     line-height('default', 'small') * font-size('cta', 'small');
+
+	@include large-or-more {
+		font-size:   font-size('cta', 'large');
+		line-height: line-height('default', 'large') * font-size('cta', 'large');
+	}
+}
+
+@mixin cta-color($color: white, $background: $color-primary, $border: $color-primary) {
+	color:         $color;
+	background:    $background;
+	border:        border-width() solid $border;
+	border-radius: border-width();
+}
+
+@mixin cta($color: white, $background: $color-primary, $border: $color-primary) {
+	@include cta-sizing;
+	@include cta-color($color, $background, $border);
+
+	text-align: center;
+
+	cursor:     pointer;
+
+	&:focus {
+		@include cta-color($color-primary, $color, $color-primary);
+
+		outline:    none;
+		box-shadow: $outline-box-shadow;
+	}
+}
+
+/**************************************************
+ * CTA IMPLEMENTATIONS
+ **************************************************/
+
+.cta {
+	display: inline-block;
+	cursor:  pointer;
+
+	@include cta(white, $color-primary, $color-primary);
+}
+
+.cta--inverted {
+	@include cta-color($color-primary, white, $color-primary);
+
+	&:focus {
+		@include cta-color(white, $color-primary, $color-primary);
+	}
+}

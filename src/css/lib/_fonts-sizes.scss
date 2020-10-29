@@ -1,0 +1,47 @@
+/**************************************************
+* FONT SIZE TOOLS
+**************************************************/
+
+$base-font-size:     16px !default;
+
+@function em($target, $context: $base-font-size) {
+	@if $target == 0 {
+		@return 0
+	}
+	@return $target / $context + 0em;
+}
+
+@function rem($target, $context: $base-font-size) {
+	@if $target == 0 {
+		@return 0
+	}
+	@return $target / $context + 0rem;
+}
+
+$weight-thin:        100;
+$weight-hairline:    100;
+$weight-extra-light: 200;
+$weight-ultra-light: 200;
+$weight-light:       300;
+$weight-normal:      400;
+$weight-medium:      500;
+$weight-semi-bold:   600;
+$weight-bold:        700;
+$weight-extra-bold:  800;
+$weight-black:       900;
+
+/**************************************************
+* LIMIT LINES
+**************************************************/
+
+@mixin max-lines($n, $line-height: 0) {
+	display:            -webkit-box;
+	-webkit-line-clamp: $n;
+	-webkit-box-orient: vertical;
+
+	@if ($line-height > 0) {
+		line-height: $line-height;
+		max-height:  $n * $line-height * 1em;
+		overflow:    hidden;
+	}
+}

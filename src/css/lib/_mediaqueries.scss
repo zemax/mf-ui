@@ -1,0 +1,74 @@
+/**************************************************
+* BREAKPOINTS
+**************************************************/
+
+$breakpoint-medium: rem(600px) !default;
+$breakpoint-large:  rem(960px) !default;
+$breakpoint-xlarge: rem(1440px) !default;
+
+/**************************************************
+* SCREEN SIZE MEDIAQUERIES
+**************************************************/
+
+@mixin small-or-less {
+	@media screen and (max-width: $breakpoint-medium - rem(1px)) {
+		@content;
+	}
+}
+
+@mixin medium-or-more {
+	@media screen and (min-width: $breakpoint-medium) {
+		@content;
+	}
+}
+
+@mixin medium {
+	@media screen and (min-width: $breakpoint-medium) and (max-width: $breakpoint-large - rem(1px)) {
+		@content;
+	}
+}
+
+@mixin medium-or-less {
+	@media screen and (max-width: $breakpoint-large - rem(1px)) {
+		@content;
+	}
+}
+
+@mixin large-or-more {
+	@media screen and (min-width: $breakpoint-large) {
+		@content;
+	}
+}
+
+@mixin large {
+	@media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-xlarge - rem(1px)) {
+		@content;
+	}
+}
+
+@mixin large-or-less {
+	@media screen and (max-width: $breakpoint-xlarge - rem(1px)) {
+		@content;
+	}
+}
+
+@mixin xlarge-or-more {
+	@media screen and (min-width: $breakpoint-xlarge) {
+		@content;
+	}
+}
+
+/**************************************************
+* HDPI MEDIAQUERIES
+**************************************************/
+
+@mixin hdpi {
+	@media only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (min--moz-device-pixel-ratio: 2),
+	only screen and (-o-min-device-pixel-ratio: 2/1),
+	only screen and (min-device-pixel-ratio: 2),
+	only screen and (min-resolution: 192dpi),
+	only screen and (min-resolution: 2dppx) {
+		@content;
+	}
+}

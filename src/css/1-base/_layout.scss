@@ -1,0 +1,85 @@
+/**************************************************
+* PADDING & GAPS
+**************************************************/
+
+@function gap($n: 1) {
+	@return $n * rem(20px);
+}
+
+@function border-width() {
+	@return rem(2px);
+}
+
+/**************************************************
+* LAYOUT SIZE
+**************************************************/
+
+@function column($n: 1) {
+	@return $n * rem(63px);
+}
+
+@function region-size($id) {
+	@if ($id == 'content') {
+		@return gap() + column(12) + gap(2 * 11) + gap();
+	}
+
+	@return 0;
+}
+
+// Overwrite generic lib values
+
+$content-container-width: region-size('content') !default;
+$breakpoint-xlarge:       $content-container-width !default;
+
+/**************************************************
+* LAYOUT IMPLEMENTATION
+**************************************************/
+
+.columns--2 {
+	@include large-or-more {
+		@include columns(2);
+	}
+}
+
+.columns--2-gap {
+	@include large-or-more {
+		@include columns(2, gap());
+	}
+}
+
+.columns--3 {
+	@include large-or-more {
+		@include columns(3);
+	}
+}
+
+.columns--3-gap {
+	@include large-or-more {
+		@include columns(3, gap());
+	}
+}
+
+.columns--4 {
+	@include large-or-more {
+		@include columns(4);
+	}
+}
+
+.columns--4-gap {
+	@include large-or-more {
+		@include columns(4, gap());
+	}
+}
+
+/**************************************************
+* PAGE LAYOUT
+**************************************************/
+
+.page-main {
+	> section {
+		@include content-container-margin();
+		padding:          gap() gap() gap(2);
+
+		background-color: white;
+	}
+}

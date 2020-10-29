@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Style Guide</title>
+	<link rel="stylesheet" href="../dist/css/styles.css">
+</head>
+<body>
+<header class="page-header" role="banner">
+	<div class="main-menu" aria-expanded="false">
+		<button class="main-menu__toggle" type="button" data-toggle-element="parent" data-toggle-attribute="aria-expanded"><span>Menu</span></button>
+		<nav class="main-menu__menu" role="navigation">
+			<ul>
+				<li><a href="#accueil">Accueil</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
+<main class="page-main" role="main">
+	<section>
+		<h1>Un titre en h1.</h1>
+
+		<h2>Suivi d'un titre en h2</h2>
+
+		<h3>Un titre en h3</h3>
+
+		<p>Ceci est un paragraphe de test, avec du texte, <strong>parfois mis en gras</strong> ou en <em>italique</em>. On y trouve aussi <a href="?test">un exemple de lien</a>.</p>
+
+		<blockquote>
+			Moins utilisé mais qui sert parfois est le blockquote.
+		</blockquote>
+
+		<form>
+			<div class="form-row form-row--inline form-row--radioboxes form-row--radioboxes-inline">
+				<label>Civilité</label>
+				<div>
+					<input type="radio" name="civility" id="civility--mme">
+					<label for="civility--mme">Madame</label>
+					<input type="radio" name="civility" id="civility--m">
+					<label for="civility--m">Monsieur</label>
+				</div>
+			</div>
+			<div class="form-row form-row--inline">
+				<label for="name">Nom</label>
+				<input type="text" id="name" placeholder="ex: Bruce Wayne">
+			</div>
+			<div class="form-row form-row--inline">
+				<label for="email">Email</label>
+				<input type="email" id="email" placeholder="ex: batman@gotham.fr…">
+			</div>
+			<div class="form-row form-row--inline">
+				<label for="date">Date</label>
+				<div class="columns--2-gap">
+					<input type="date" id="date">
+					<input type="time" id="time">
+				</div>
+			</div>
+			<div class="form-row form-row--inline form-row--select">
+				<label for="country">Pays</label>
+				<select id="country">
+					<optgroup label="Europe">
+						<option>France</option>
+						<option>Angleterre</option>
+					</optgroup>
+					<option>Japon</option>
+					<option>Chine</option>
+				</select>
+			</div>
+			<div class="form-row form-row--inline form-row--textarea">
+				<label for="message">Message</label>
+				<textarea id="message" rows="5" placeholder="ex: Votre message…"></textarea>
+			</div>
+			<div class="form-row form-row--inline-input form-row--checkbox">
+				<input type="checkbox" id="rules">
+				<label for="rules">J’accepte les conditions générales</label>
+			</div>
+			<div class="form-row form-row--inline-input form-row--submit">
+				<button type="submit"><span>Valider</span></button>
+				<a href="#back">Retour</a>
+			</div>
+		</form>
+	</section>
+</main>
+<footer class="page-footer" role="contentinfo">
+
+</footer>
+</body>
+</html>

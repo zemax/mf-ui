@@ -1,0 +1,74 @@
+/**************************************************
+* PAGE LAYOUT
+**************************************************/
+
+$content-container-width: ((1 + (12 * 3) + (11 * 1) + 1) * 1.5rem) !default;
+
+@mixin content-container-margin($padding: 0, $width: $content-container-width) {
+	max-width:     $width;
+	margin-left:   auto;
+	margin-right:  auto;
+	padding-left:  $padding;
+	padding-right: $padding;
+}
+
+@mixin content-container-padding($padding: 0, $width: $content-container-width) {
+	@if ($padding > 0) {
+		padding-left:  calc(50% - #{.5 * $width} + #{$padding});
+		padding-right: calc(50% - #{.5 * $width} + #{$padding});
+	} @else {
+		padding-left:  calc(50% - #{.5 * $width});
+		padding-right: calc(50% - #{.5 * $width});
+	}
+}
+
+/**************************************************
+* CONTENT LAYOUT
+**************************************************/
+
+@function column-width($n, $total, $gap: 0) {
+	@if ($gap == 0) {
+		@return ($n / $total) * 100%;
+	}
+
+	@return calc(#{($n / $total) * 100%} - #{(($total - $n) / $total) * $gap});
+}
+
+@mixin flex-width($w) {
+	flex:      0 0 $w;
+	width:     $w;
+	max-width: $w;
+}
+
+@mixin columns($total, $gap: 0) {
+	display:         flex;
+	flex-flow:       row wrap;
+	justify-content: space-between;
+	align-items:     stretch;
+
+	> * {
+		@include flex-width(column-width(1, $total, $gap));
+		margin-bottom: $gap;
+	}
+
+	&::before,
+	&::after {
+		content:       '';
+		order:         1;
+		@include flex-width(column-width(1, $total, $gap));
+		margin-bottom: 0;
+	}
+}
+
+/**************************************************
+* CONTENT TOOLS
+**************************************************/
+
+@mixin clearulli {
+	ul,
+	li {
+		margin:     0;
+		padding:    0;
+		list-style: none;
+	}
+}

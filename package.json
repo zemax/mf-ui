@@ -1,0 +1,29 @@
+{
+	"name":            "@zemax/mf-ui",
+	"version":         "1.0.1",
+	"description":     "CSS & UI scaffholding",
+	"scripts":         {
+		"build:css":  "node node.build-css.js",
+		"watch:css":  "watch \"npm run build:css\" src/css/",
+		"livereload": "livereload dist/ --debug"
+	},
+	"repository":      {
+		"type": "git",
+		"url":  "git+https://github.com/zemax/mf-ui.git"
+	},
+	"author":          "Maxime Cousinou",
+	"devDependencies": {
+		"autoprefixer":  "^10.0.1",
+		"livereload":    "^0.9.1",
+		"node-sass-svg": "^1.1.1",
+		"postcss":       "^8.1.4",
+		"sass":          "^1.27.0",
+		"watch":         "^1.0.2"
+	},
+	"browserslist":    [
+		"last 3 major versions",
+		"> 1%",
+		"IE 10",
+		"iOS 8"
+	]
+}

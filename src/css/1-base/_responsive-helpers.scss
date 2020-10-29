@@ -1,0 +1,83 @@
+/**************************************************
+* CSS -> JS trick
+**************************************************/
+
+body::before {
+	display: none;
+}
+
+@include small-or-less {
+	body::before {
+		content: 'small';
+	}
+}
+
+@include medium {
+	body::before {
+		content: 'medium';
+	}
+}
+
+@include large {
+	body::before {
+		content: 'large';
+	}
+}
+
+@include xlarge-or-more {
+	body::before {
+		content: 'xlarge';
+	}
+}
+
+/**************************************************
+* HELPERS
+**************************************************/
+
+.hide-on-small {
+	@include small-or-less {
+		display: none;
+	}
+}
+
+.hide-on-medium {
+	@include medium {
+		display: none;
+	}
+}
+
+.hide-on-large {
+	@include large-or-more {
+		display: none;
+	}
+}
+
+.hide-on-xlarge {
+	@include xlarge-or-more {
+		display: none;
+	}
+}
+
+.show-on-small {
+	@include small-or-less {
+		display: block;
+	}
+}
+
+.show-on-medium {
+	@include medium {
+		display: block;
+	}
+}
+
+.show-on-large {
+	@include large-or-more {
+		display: block;
+	}
+}
+
+.show-on-xlarge {
+	@include xlarge-or-more {
+		display: block;
+	}
+}

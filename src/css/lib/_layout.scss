@@ -40,7 +40,7 @@ $content-container-width: ((1 + (12 * 3) + (11 * 1) + 1) * 1.5rem) !default;
 	max-width: $w;
 }
 
-@mixin columns($total, $gap: 0) {
+@mixin columns($total, $gap: 0, $bottom: true) {
 	display:         flex;
 	flex-flow:       row wrap;
 	justify-content: space-between;
@@ -48,7 +48,10 @@ $content-container-width: ((1 + (12 * 3) + (11 * 1) + 1) * 1.5rem) !default;
 
 	> * {
 		@include flex-width(column-width(1, $total, $gap));
-		margin-bottom: $gap;
+
+		@if ($bottom) {
+			margin-bottom: $gap;
+		}
 	}
 
 	&::before,

@@ -27,12 +27,36 @@
  * SIMPLE TRIANGLE
  **************************************************/
 
+@function svg-triangle-right($color, $width: 5, $height: 10) {
+	@return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$width}' height='#{$height}' viewBox='0 0 #{$width} #{$height}'%3E%3Cpath fill='%23#{str-slice(inspect($color),2)}' stroke='none' d='M0 0L#{$width} #{.5 * $height}L0 #{$height}z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+@mixin svg-triangle-right($color, $width: 5, $height: 10, $stroke: 1, $linecap: 'round', $linejoin: 'round') {
+	background-image: svg-triangle-right($color, $width, $height, $stroke, $linecap, $linejoin);
+}
+
+@function svg-triangle-left($color, $width: 5, $height: 10) {
+	@return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$width}' height='#{$height}' viewBox='0 0 #{$width} #{$height}'%3E%3Cpath fill='%23#{str-slice(inspect($color),2)}' stroke='none' d='M#{$width} 0L0 #{.5 * $height}L#{$width} #{$height}z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+@mixin svg-triangle-left($color, $width: 5, $height: 10, $stroke: 1, $linecap: 'round', $linejoin: 'round') {
+	background-image: svg-triangle-left($color, $width, $height, $stroke, $linecap, $linejoin);
+}
+
 @function svg-triangle-down($color, $width: 5, $height: 10) {
 	@return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$width}' height='#{$height}' viewBox='0 0 #{$width} #{$height}'%3E%3Cpath fill='%23#{str-slice(inspect($color),2)}' stroke='none' d='M0 0L#{.5 * $width} #{$height}L#{$width} 0z'%3E%3C/path%3E%3C/svg%3E");
 }
 
-@mixin svg-arrow-right($color, $width: 5, $height: 10, $stroke: 1, $linecap: 'round', $linejoin: 'round') {
-	background-image: svg-arrow-right($color, $width, $height, $stroke, $linecap, $linejoin);
+@mixin svg-triangle-down($color, $width: 5, $height: 10, $stroke: 1, $linecap: 'round', $linejoin: 'round') {
+	background-image: svg-triangle-down($color, $width, $height, $stroke, $linecap, $linejoin);
+}
+
+@function svg-triangle-up($color, $width: 5, $height: 10) {
+	@return url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='#{$width}' height='#{$height}' viewBox='0 0 #{$width} #{$height}'%3E%3Cpath fill='%23#{str-slice(inspect($color),2)}' stroke='none' d='M0 #{$height}L#{.5 * $width} 0L#{$width} #{$height}z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+@mixin svg-triangle-up($color, $width: 5, $height: 10, $stroke: 1, $linecap: 'round', $linejoin: 'round') {
+	background-image: svg-triangle-up($color, $width, $height, $stroke, $linecap, $linejoin);
 }
 
 /**************************************************

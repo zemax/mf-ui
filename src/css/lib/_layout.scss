@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /**************************************************
 * PAGE LAYOUT
 **************************************************/
@@ -28,10 +30,10 @@ $content-container-width: ((1 + (12 * 3) + (11 * 1) + 1) * 1.5rem) !default;
 
 @function column-width($n, $total, $gap: 0) {
 	@if ($gap == 0) {
-		@return ($n / $total) * 100%;
+		@return math.div($n, $total) * 100%;
 	}
 
-	@return calc(#{($n / $total) * 100%} - #{(($total - $n) / $total) * $gap});
+	@return calc(#{ math.div($n, $total) * 100%} - #{ math.div($total - $n, $total) * $gap});
 }
 
 @mixin flex-width($w) {

@@ -1,6 +1,6 @@
 {
 	"name":            "@zemax/mf-ui",
-	"version":         "1.0.3",
+	"version":         "1.0.4",
 	"description":     "CSS & UI scaffholding",
 	"scripts":         {
 		"build:css":  "node node.build-css.js",
@@ -13,11 +13,11 @@
 	},
 	"author":          "Maxime Cousinou",
 	"devDependencies": {
-		"autoprefixer":  "^10.0.1",
-		"livereload":    "^0.9.1",
+		"autoprefixer":  "^10.3.7",
+		"livereload":    "^0.9.3",
 		"node-sass-svg": "^1.1.1",
-		"postcss":       "^8.1.4",
-		"sass":          "^1.27.0",
+		"postcss":       "^8.3.9",
+		"sass":          "^1.43.2",
 		"watch":         "^1.0.2"
 	},
 	"browserslist":    [

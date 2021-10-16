@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /**************************************************
 * FONT SIZE TOOLS
 **************************************************/
@@ -8,14 +10,14 @@ $base-font-size:     16px !default;
 	@if $target == 0 {
 		@return 0
 	}
-	@return $target / $context + 0em;
+	@return math.div($target, $context) + 0em;
 }
 
 @function rem($target, $context: $base-font-size) {
 	@if $target == 0 {
 		@return 0
 	}
-	@return $target / $context + 0rem;
+	@return math.div($target, $context) + 0rem;
 }
 
 $weight-thin:        100;
